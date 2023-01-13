@@ -12,11 +12,13 @@ class DojahFinancial {
   final String publicKey;
   final DojahType type;
   final Map<String, dynamic>? metadata;
+  final UserData? userData;
 
   DojahFinancial({
     required this.appId,
     required this.publicKey,
     required this.type,
+    this.userData,
     this.metadata,
   });
 
@@ -45,6 +47,7 @@ class DojahFinancial {
           publicKey: publicKey,
           type: type,
           metadata: metadata,
+          userdata: userData,
           success: (result) {
             onSuccess!(result);
           },

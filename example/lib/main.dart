@@ -38,6 +38,12 @@ class _MyHomePageState extends State<MyHomePage> {
     metadata: {
       "reference": "someRef",
     },
+    userData: UserData(
+      firstName: 'John',
+      lastName: 'Doe',
+      dob: '1982-03-12',
+      residenceCountry: 'NG',
+    ),
   );
 
   @override

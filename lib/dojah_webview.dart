@@ -14,6 +14,7 @@ class DojahWebView extends StatefulWidget {
     required this.appId,
     required this.type,
     this.metadata,
+    this.userdata,
   }) : super(key: key);
 
   final Function(dynamic) success;
@@ -22,6 +23,7 @@ class DojahWebView extends StatefulWidget {
   final String publicKey;
   final String appId;
   final DojahType type;
+  final UserData? userdata;
   final Map<String, dynamic>? metadata;
 
   @override
@@ -72,6 +74,7 @@ class _DojahWebViewState extends State<DojahWebView> {
                                     p_key: "${widget.publicKey}",
                                     type: "${widget.type.name}",
                                     metadata: ${json.encode(widget.metadata ?? {})},
+                                    user_data: ${json.encode(widget.userdata?.toJson() ?? {})},
                                     config: {
                                       debug: false,
                                       aml: false,
@@ -79,9 +82,9 @@ class _DojahWebViewState extends State<DojahWebView> {
                                       review_process: "${ReviewType.Automatic.name}",
                                       strictness_level: 'high', 
                                       pages: [
-                                            { page: 'user-data', config: { enabled: false } },
+                                            { page: 'user-data', config: { enabled: true } },
                                             { page: 'countries', config: { enabled: false } },
-                                            { page: 'id', config: { passport: true, dl: true, custom: true } },
+                                            { page: 'id', config: { nin: true, passport: true, dl: true, custom: true } },
                                           ],
                                     },
                                     onSuccess: function (response) {
